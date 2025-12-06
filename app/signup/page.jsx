@@ -7,77 +7,77 @@ export default function SignupPage() {
   const [name, setName] = useState("");
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({});
+  const [nameError, setNameError] = useState("");
+  const [emailPhoneError, setEmailPhoneError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   const router = useRouter();
 
-  // +998 telefon validatsiyasi
-  const isValidPhone = (phone) => {
+  const validate = () => {
+    let valid = true;
+
+    // Name
+    if (name.trim().length < 3) {
+      setNameError("Name must be at least 3 characters");
+      valid = false;
+    } else {
+      setNameError("");
+    }
+
+    // Email or Phone
     const phoneRegex = /^\+998\s?(90|91|93|94|95|97|98|99)\s?\d{3}\s?\d{2}\s?\d{2}$/;
-    return phoneRegex.test(phone.trim());
-  };
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailOrPhone) && !phoneRegex.test(emailOrPhone)) {
+      setEmailPhoneError("Enter valid email or phone (+998 format)");
+      valid = false;
+    } else {
+      setEmailPhoneError("");
+    }
 
-  // Email validatsiyasi
-  const isValidEmail = (email) => {
-    return /\S+@\S+\.\S+/.test(email);
-  };
+    // Password
+    if (
+      password.length < 8 ||
+      !/[A-Z]/.test(password) ||
+      !/[0-9]/.test(password) ||
+      !/[!@#$%^&*]/.test(password)
+    ) {
+      setPasswordError("Password: 8+ chars, 1 uppercase, 1 number, 1 special");
+      valid = false;
+    } else {
+      setPasswordError("");
+    }
 
-  // Parol validatsiyasi
-  const isValidPassword = (pass) => {
-    return pass.length >= 8 && 
-           /[A-Z]/.test(pass) && 
-           /[0-9]/.test(pass) && 
-           /[!@#$%^&*]/.test(pass);
+    return valid;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newErrors = {};
-
-    if (name.trim().length < 3) {
-      newErrors.name = "Ism kamida 3 ta harf bo‘lishi kerak";
+    if (validate()) {
+      alert("Account created successfully!");
+      console.log("User:", { name, emailOrPhone, password });
+      router.push("/");
     }
-
-    const input = emailOrPhone.trim();
-    if (!isValidEmail(input) && !isValidPhone(input)) {
-      newErrors.emailOrPhone = "To‘g‘ri email yoki +998 telefon raqami kiriting";
-    }
-
-    if (!isValidPassword(password)) {
-      newErrors.password = "Parol: 8+ belgi, 1 katta harf, 1 raqam, 1 belgi (!@#$%^&*)";
-    }
-
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
-
-    // Hammasi to‘g‘ri — muvaffaqiyat!
-    setErrors({});
-    alert("Muvaffaqiyatli ro'yxatdan o'tdingiz!");
-    console.log("Yangi user:", { name, emailOrPhone, password });
-    router.push("/");
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyan-50 to-blue-100 flex items-center justify-center px-4 py-12">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div className="min-h-screen bg-sky-100 flex items-center justify-center px-4">
+      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
         {/* Chap taraf — rasm */}
-        <div className="hidden lg:flex justify-center">
+        <div className="hidden lg:block">
           <img
             src="https://i.imgur.com/7rMoeoq.png"
-            alt="Shopping"
-            className="w-full max-w-lg rounded-3xl shadow-2xl"
+            alt="Shopping cart and phone"
+            className="w-full max-w-md mx-auto"
           />
         </div>
 
         {/* O‘ng taraf — forma */}
-        <div className="bg-white rounded-3xl shadow-2xl p-10 lg:p-12 max-w-lg w-full mx-auto">
+        <div className="flex flex-col items-start">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">Create an account</h1>
           <p className="text-gray-600 mb-10">Enter your details below</p>
 
-          <form onSubmit={handleSubmit} className="space-y-8">
+          <form onSubmit={handleSubmit} className="w-full max-w-md space-y-8">
             {/* Name */}
             <div>
               <input
@@ -85,9 +85,9 @@ export default function SignupPage() {
                 placeholder="Name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-6 py-4 text-lg border-b-2 border-gray-300 focus:border-red-500 outline-none transition"
+                className="w-full px-1 py-3 text-lg border-b-2 border-gray-300 focus:border-gray-900 outline-none transition-colors bg-transparent"
               />
-              {errors.name && <p className="text-red-500 text-sm mt-2">{errors.name}</p>}
+              {nameError && <p className="text-red-500 text-sm mt-2">{nameError}</p>}
             </div>
 
             {/* Email or Phone */}
@@ -97,10 +97,9 @@ export default function SignupPage() {
                 placeholder="Email or Phone Number"
                 value={emailOrPhone}
                 onChange={(e) => setEmailOrPhone(e.target.value)}
-                className="w-full px-6 py-4 text-lg border-b-2 border-gray-300 focus:border-red-500 outline-none transition"
+                className="w-full px-1 py-3 text-lg border-b-2 border-gray-300 focus:border-gray-900 outline-none transition-colors bg-transparent"
               />
-              {errors.emailOrPhone && <p className="text-red-500 text-sm mt-2">{errors.emailOrPhone}</p>}
-              <p className="text-xs text-gray-500 mt-1">Masalan: +998 90 123 45 67</p>
+              {emailPhoneError && <p className="text-red-500 text-sm mt-2">{emailPhoneError}</p>}
             </div>
 
             {/* Password */}
@@ -110,28 +109,31 @@ export default function SignupPage() {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-6 py-4 text-lg border-b-2 border-gray-300 focus:border-red-500 outline-none transition"
+                className="w-full px-1 py-3 text-lg border-b-2 border-gray-300 focus:border-gray-900 outline-none transition-colors bg-transparent"
               />
-              {errors.password && <p className="text-red-500 text-sm mt-2">{errors.password}</p>}
+              {passwordError && <p className="text-red-500 text-sm mt-2">{passwordError}</p>}
             </div>
 
+            {/* Create Account tugmasi */}
             <button
               type="submit"
-              className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-5 rounded-xl text-xl transition transform hover:scale-105 shadow-lg"
+              className="w-full bg-red-500 hover:bg-red-600 text-white font-medium py-4 rounded-lg transition"
             >
               Create Account
             </button>
           </form>
 
-          <button className="w-full mt-6 border border-gray-300 hover:bg-gray-50 py-4 rounded-xl flex items-center justify-center gap-3">
-            <img src="https://www.google.com/favicon.ico" alt="Google" className="w-6 h-6" />
-            <span className="font-medium text-gray-700">Sign up with Google</span>
+          {/* Google tugmasi */}
+          <button className="w-full max-w-md mt-4 border border-gray-300 py-4 rounded-lg flex items-center justify-center gap-3 hover:bg-gray-50 transition">
+            <img src="https://www.google.com/favicon.ico" alt="Google" className="w-5 h-5" />
+            <span className="text-gray-700">Sign up with Google</span>
           </button>
 
-          <p className="text-center mt-10 text-gray-600">
+          {/* Log in link */}
+          <p className="mt-8 text-gray-600 text-center w-full max-w-md">
             Already have account?{" "}
-            <a href="/login" className="text-red-500 font-semibold hover:underline">
-              Log 
+            <a href="/login" className="text-gray-900 underline font-medium">
+              Log in
             </a>
           </p>
         </div>
