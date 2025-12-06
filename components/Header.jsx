@@ -17,7 +17,6 @@ export default function Header() {
                 <Link href={`/contact`}>Contact</Link>
                 <Link href={`/about`}>About</Link>
                 <Link href={`/signup`}>Sign Up</Link>
-                {/* nima */}
             </div>
 
             <div className="h-full flex items-center gap-2">
