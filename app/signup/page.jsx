@@ -66,7 +66,7 @@ export default function SignupPage() {
         {/* Chap taraf — rasm */}
         <div className="hidden lg:block">
           <img
-            src="https://i.imgur.com/7rMoeoq.png"
+            src="/Signup-image.png"
             alt="Shopping cart and phone"
             className="w-full max-w-md mx-auto"
           />
