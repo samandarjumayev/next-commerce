@@ -2,7 +2,7 @@ import { Slash } from 'lucide-react';
 
 export default function Account() {
   return <div>
-    <div className='w-[1100px] mx-auto'>
+    <div className='w-[1100px] mx-auto pb-20'>
       <div className='flex pt-[80px] justify-between items-center'>
         <div className='flex items-center gap-2'>
           <p className='text-[#000000] font-normal text-[14px] leading-[21px] tracking-normal'>Home</p>
@@ -28,7 +28,7 @@ export default function Account() {
           </div>
           <h1 className='text-[#000000] font-bold text-[16px] leading-[21px] tracking-normal'>My WishList</h1>
         </div>
-        <div className='w-[870px] h-[630px] py-[40px] px-[80px]'>
+        <div className='w-[870px] h-[630px] py-[40px] px-[80px] shadow-[0px_1px_13px_0px_#0000000D] rounded-[4px]'>
           <h1 className='text-[#DB4444] font-bold text-[20px] leading-[28px] tracking-normal pb-6'>Edit Your Profile</h1>
           <div className="grid grid-cols-2 gap-x-[50px] gap-y-6">
             <div>
