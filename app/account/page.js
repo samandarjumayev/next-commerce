@@ -6,3 +6,5 @@ export default function Account(){
     Account
   </div>
 }
+
+// Nuriddin
