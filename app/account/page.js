@@ -13,7 +13,7 @@ export default function Account() {
           <h1 className='text-[#00000080] font-normal text-[14px] leading-[21px] tracking-normal'>Welcome! <span className='text-[#DB4444] font-normal text-[14px] leading-[21px] tracking-normal'>Md Rimel</span></h1>
         </div>
       </div>
-      <div className='pt-[80px] flex items-start justify-between'>
+      <div className='pt-[81px] flex items-start justify-between'>
         <div>
           <h1 className='text-[#000000] font-bold text-[16px] leading-[21px] tracking-normal'>Manage My Account</h1>
           <div className='pl-[35px] flex flex-col gap-[8px] py-[16px]'>
