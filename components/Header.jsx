@@ -19,12 +19,6 @@ export default function Header(){
                 <Link href={`/signup`}>Sign Up</Link>
             </div>
 
-            {/* main */}
-
-            {/* test main */}
-
-            {/* test again main */}
-
             <div className="h-full flex items-center gap-2">
                 <div className="bg-[#F5F5F5] rounded py-1 px-2 flex items-center gap-2">
                     <input type="text" name="" id="" placeholder="What are you looking for?" className="outline-none text-[15px]" />
