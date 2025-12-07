@@ -1,8 +1,8 @@
-import { Slash } from 'lucide-react';
+// import { Slash } from 'lucide-react';
 
 export default function Account() {
   return <div>
-    <div className='w-[1100px] mx-auto pb-20'>
+    {/* <div className='w-[1100px] mx-auto pb-20'>
       <div className='flex pt-20 justify-between items-center'>
         <div className='flex items-center gap-2'>
           <p className='text-[#000000] font-normal text-[14px] leading-[21px] tracking-normal'>Home</p>
@@ -60,7 +60,7 @@ export default function Account() {
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
   </div >
 }
 

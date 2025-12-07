@@ -1,7 +1,7 @@
 import { Search, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 
-export default function Header() {
+export default function Header(){
     return <div className="w-full flex items-center justify-between flex-col border-b border-zinc-300">
         <div className="bg-black w-full h-[50px] text-[14px] text-white flex items-center justify-center gap-3">
             <p>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%</p>
@@ -22,9 +22,9 @@ export default function Header() {
             <div className="h-full flex items-center gap-2">
                 <div className="bg-[#F5F5F5] rounded py-1 px-2 flex items-center gap-2">
                     <input type="text" name="" id="" placeholder="What are you looking for?" className="outline-none text-[15px]" />
-                    <Link href={``}><Search size={16} /></Link>
+                    <button><Search size={16} /></button>
                 </div>
-                <Link href={``}><ShoppingCart /></Link>
+                <Link href={`/cart`}><ShoppingCart /></Link>
             </div>
         </div>
     </div>
