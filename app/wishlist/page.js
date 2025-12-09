@@ -6,5 +6,6 @@ export default function Wishlist(){
     Wishlist
     Ozgartirildi
     Umid
+   
   </div>
 }
