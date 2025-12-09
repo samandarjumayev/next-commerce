@@ -6,6 +6,6 @@ export default function Wishlist(){
     Wishlist
     Ozgartirildi
     Umid
-    Allohu akbar
+   
   </div>
 }
