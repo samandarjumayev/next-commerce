@@ -1,4 +1,5 @@
-import { ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export default async function CategoryComponent(){
@@ -24,7 +25,31 @@ export default async function CategoryComponent(){
             })}
         </div>
         <div className="flex-1 h-full pt-7 pl-3 flex">
-            <div className="bg-black w-full h-[344px]">
+            <div className="bg-black w-full h-[344px] flex items-center gap-3 px-15 relative">
+
+                <div className="flex-1 text-white">
+                    <h2 className="text-[16px] flex items-center mb-3 gap-3">
+                        <Image src={'/iphoneLogo.png'} alt="iphone logo" width={40} height={49} />
+                        iPhone 14 Series
+                    </h2>
+                    <h1 className="text-[48px] leading-[60px] font-semibold">Up to 10% off Vaucher</h1>
+                    <Link href={'/'} className="flex items-center gap-1 mt-5">
+                        <p className="border-b font-medium">Shop Now</p> 
+                        <ArrowRight size={24} />
+                    </Link>
+                </div>
+
+                <div className="flex-1">
+                    <Image src={'/home-phone.jpg'} width={496} height={352} alt="Home Phone image"  />
+                </div>
+
+                <div className="absolute bottom-3 w-full flex items-center justify-center gap-2">
+                    <div className="w-[11px] h-[11px] rounded-full bg-zinc-400"></div>
+                    <div className="w-[11px] h-[11px] rounded-full bg-zinc-400"></div>
+                    <div className="w-[11px] h-[11px] rounded-full bg-orange-400 outline-2 outline-white"></div>
+                    <div className="w-[11px] h-[11px] rounded-full bg-zinc-400"></div>
+                    <div className="w-[11px] h-[11px] rounded-full bg-zinc-400"></div>
+                </div>
 
             </div>
         </div>
