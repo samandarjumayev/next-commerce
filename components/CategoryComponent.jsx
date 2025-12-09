@@ -52,7 +52,7 @@ export default async function CategoryComponent(){
                 </div>
 
                 <div className="flex-1">
-                    <Image src={'/home-phone.jpg'} width={496} height={352} alt="Home Phone image"  />
+                    <Image src={'/home-phone.jpg'} width={496} height={344} alt="Home Phone image"  />
                 </div>
 
                 <div className="absolute bottom-3 w-full flex items-center justify-center gap-2">
