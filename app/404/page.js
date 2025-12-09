@@ -3,8 +3,8 @@ import React from "react"
 
 export default function Error(){
   return <div className="container max-w-[1100px] mx-auto">
-    <div className="mt-20">
-      <Link href="/">Home</Link>
+    <div className="mt-20 flex">
+      <Link href="/" className="text-gray-600">Home</Link>
       <p>/</p>
       <p className="text-black text-[14px]">404 Error</p>
     </div>
