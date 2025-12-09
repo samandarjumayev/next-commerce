@@ -25,7 +25,7 @@ export default async function CategoryComponent(){
         ...new Set(products2?.map(item => item.category))
     ]
     
-    return <div className="w-full flex gap-5 mb-10">
+    return <div className="w-full flex gap-5 mb-10 overflow-hidden">
         <div className="border-r border-zinc-300 py-3 pr-5 flex flex-col gap-2">
             {categories.map(item => {
                 return <div key={item}>
